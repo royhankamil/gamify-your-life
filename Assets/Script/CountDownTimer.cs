@@ -5,7 +5,9 @@ using UnityEngine;
 public class CountDownTimer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
-    int setMinutes = 2, seconds = 0, minutes = 0;
+    [SerializeField] private TMP_InputField setMinutesText;
+    int seconds = 0, minutes = 0;
+    private bool started = false, stopped;
 
     void Start()
     {
@@ -14,18 +16,23 @@ public class CountDownTimer : MonoBehaviour
 
     public void StartCount()
     {
-        if (minutes == 0 && seconds == 0)
+        if (!started)
         {
-            minutes = setMinutes;
-            seconds = 0;
+            started = true;
+            if (minutes == 0 && seconds == 0)
+            {
+                minutes = setMinutesText.text == "" ? 0 : int.Parse(setMinutesText.text);
+                seconds = 0;
+            }
+            timerText.text = $"{minutes.ToString("00")}:{seconds.ToString("00")}";
+            StartCoroutine(Counter());
         }
-        timerText.text = $"{minutes.ToString("00")}:{seconds.ToString("00")}";
-        StartCoroutine(Counter());
+
     }
 
     IEnumerator Counter()
     {
-        while (minutes > 0 || seconds > 0)
+        while (minutes > 0 || seconds > 0 || stopped)
         {
             if (seconds == 0)
             {
@@ -46,11 +53,21 @@ public class CountDownTimer : MonoBehaviour
 
     public void StopCount()
     {
-        StopCoroutine(Counter());
+        if (started && !stopped)
+        {
+            stopped = true;
+            StopCoroutine(Counter());
+        }
+        else if (stopped)
+        {
+            stopped = false;
+            StartCoroutine(Counter());
+        }
     }
 
     void Update()
     {
-        
+
     }
+
 }
