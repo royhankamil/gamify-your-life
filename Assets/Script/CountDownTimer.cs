@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CountDownTimer : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI timerText, startButtonText;
     [SerializeField] private TMP_InputField setMinutesText;
     int seconds = 0, minutes = 0;
-    private bool started = false, stopped;
+    private bool started = false, stopped = false;
 
     void Start()
     {
@@ -19,6 +19,9 @@ public class CountDownTimer : MonoBehaviour
         if (!started)
         {
             started = true;
+            stopped = false;
+            startButtonText.text = "Pause";
+
             if (minutes == 0 && seconds == 0)
             {
                 minutes = setMinutesText.text == "" ? 0 : int.Parse(setMinutesText.text);
@@ -27,42 +30,49 @@ public class CountDownTimer : MonoBehaviour
             timerText.text = $"{minutes.ToString("00")}:{seconds.ToString("00")}";
             StartCoroutine(Counter());
         }
+        else if (started && !stopped)
+        {
+            stopped = true;
+            startButtonText.text = "Resume";
+        }
+        else if (started && stopped)
+        {
+            stopped = false;
+            startButtonText.text = "Pause";
+        }
 
     }
 
     IEnumerator Counter()
     {
-        while (minutes > 0 || seconds > 0 || stopped)
+        while (minutes > 0 || seconds > 0)
         {
-            if (seconds == 0)
+            if (seconds == 0 && minutes > 0 && !stopped)
             {
-                if (minutes > 0)
-                {
-                    minutes--;
-                    seconds = 59;
-                }
+                minutes--;
+                seconds = 59;
             }
             else
             {
-                seconds--;
+                if (!stopped)
+                    seconds--;
             }
             timerText.text = $"{minutes.ToString("00")}:{seconds.ToString("00")}";
             yield return new WaitForSeconds(1f);
         }
     }
 
-    public void StopCount()
+    public void ResetCount()
     {
-        if (started && !stopped)
+        StopCoroutine(Counter());
+        started = false;
+        stopped = false;
+        if (minutes == 0 && seconds == 0)
         {
-            stopped = true;
-            StopCoroutine(Counter());
+            minutes = setMinutesText.text == "" ? 0 : int.Parse(setMinutesText.text);
+            seconds = 0;
         }
-        else if (stopped)
-        {
-            stopped = false;
-            StartCoroutine(Counter());
-        }
+        timerText.text = $"{minutes.ToString("00")}:{seconds.ToString("00")}";
     }
 
     void Update()
