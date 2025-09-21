@@ -1703,7 +1703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &982788058
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1767,8 +1767,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 869388151}
   m_HandleRect: {fileID: 869388150}
   m_Direction: 0
-  m_Value: -0.00009843489
-  m_Size: 0.99933416
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2213,10 +2213,10 @@ RectTransform:
   - {fileID: 1933568934}
   m_Father: {fileID: 1665490246}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.5499, y: -45.31}
-  m_SizeDelta: {x: 482.31, y: 644.87}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -71.67999}
+  m_SizeDelta: {x: 0, y: -143.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1315600012
 MonoBehaviour:
@@ -2233,7 +2233,7 @@ MonoBehaviour:
   m_Content: {fileID: 1578285741}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 2
+  m_MovementType: 1
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -2241,8 +2241,8 @@ MonoBehaviour:
   m_Viewport: {fileID: 1711398502}
   m_HorizontalScrollbar: {fileID: 982788059}
   m_VerticalScrollbar: {fileID: 1933568935}
-  m_HorizontalScrollbarVisibility: 0
-  m_VerticalScrollbarVisibility: 0
+  m_HorizontalScrollbarVisibility: 1
+  m_VerticalScrollbarVisibility: 1
   m_HorizontalScrollbarSpacing: -3
   m_VerticalScrollbarSpacing: -3
   m_OnValueChanged:
@@ -2531,10 +2531,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1711398502}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.13000488}
-  m_SizeDelta: {x: 0.30999756, y: -645}
+  m_AnchoredPosition: {x: -0.15490723, y: 0}
+  m_SizeDelta: {x: 0, y: 691.58}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1578285742
 MonoBehaviour:
@@ -2554,9 +2554,9 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 25
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -2945,9 +2945,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -8.4999695, y: 0}
   m_SizeDelta: {x: -17, y: 0}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1711398504
 MonoBehaviour:
   m_ObjectHideFlags: 0

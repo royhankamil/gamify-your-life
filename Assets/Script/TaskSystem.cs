@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class TaskSystem : MonoBehaviour
 {
-    [SerializeField] private Transform taskParent;
+    [SerializeField] private RectTransform taskParent;
     [SerializeField] private TMP_InputField taskInput;
     [SerializeField] private GameObject taskPrefab;
+    // [SerializeField] private float gap;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +25,7 @@ public class TaskSystem : MonoBehaviour
         if (taskInput.text != "")
         {
             GameObject newTask = Instantiate(taskPrefab, taskParent);
+            taskParent.sizeDelta = new Vector2(taskParent.sizeDelta.x, 125 * (taskParent.childCount - 1) + 100);
             newTask.GetComponent<OneTask>().SetTaskText(taskInput.text);
             taskInput.text = "";
         }
