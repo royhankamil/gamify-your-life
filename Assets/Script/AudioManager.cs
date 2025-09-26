@@ -4,16 +4,21 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource backgroundMusicSource;
-    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private AudioSource[] backgroundMusicSource;
+    [SerializeField] private Slider[] volumeSlider;
 
     private void Start()
-    {   
-        volumeSlider.value = backgroundMusicSource.volume;
+    {
+        for (int i = 0; i < volumeSlider.Length; i++)
+        {
+            volumeSlider[i].value = backgroundMusicSource[i].volume;
+            int sliderIndex = i;
+            volumeSlider[sliderIndex].onValueChanged.AddListener((float volume) => SetBackgroundMusicVolume(volume, sliderIndex));
+        }
     }
 
-    public void SetBackgroundMusicVolume(float volume)
+    public void SetBackgroundMusicVolume(float volume, int index)
     {
-        backgroundMusicSource.volume = volume;
+        backgroundMusicSource[index].volume = volume;
     }
 }
